@@ -1,26 +1,30 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import "./App.css";
+import useCsvHandler from "./utils/csvHandler";
+import DataGrid from "./components/DataGrid";
+import { ThemeProvider } from "@material-ui/core/styles";
+import Layout from "./components/Layout";
+import { reducer, initialState } from "./reducers/appReducer";
+import { theme } from "./utils/theme";
+import { AddNewShipment } from "./components/AddNewShipment";
 
-function App() {
+export const DataContext = React.createContext();
+
+export const App = () => {
+  const [state, dispatch] = React.useReducer(reducer, initialState);
+  useCsvHandler({ state, dispatch });
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <DataContext.Provider value={{ state, dispatch }}>
+      <ThemeProvider theme={theme}>
+        <Layout>
+          <div className="App">
+            <DataGrid />
+            <AddNewShipment />
+          </div>
+        </Layout>
+      </ThemeProvider>
+    </DataContext.Provider>
   );
-}
+};
 
 export default App;
