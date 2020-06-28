@@ -1,5 +1,5 @@
-import { readRemoteFile } from "react-papaparse";
-import { getColumnData, getRowData } from "./dataTranslator";
+import { readRemoteFile } from 'react-papaparse';
+import { getColumnData, getRowData } from './dataTranslator';
 
 export const useCsvHandler = (props) => {
   const { dispatch, state } = props;
@@ -11,12 +11,12 @@ export const useCsvHandler = (props) => {
   }
 
   if (state.isLoaded === false) {
-    readRemoteFile("data/shipment-data.csv", {
+    readRemoteFile('data/shipment-data.csv', {
       download: true,
       skipEmptyLines: true,
       complete: (results) => {
         dispatch({
-          type: "DATA_LOADED",
+          type: 'DATA_LOADED',
           payload: results,
         });
       },

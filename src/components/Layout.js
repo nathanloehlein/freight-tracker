@@ -1,8 +1,8 @@
-import React from "react";
-import CssBaseline from "@material-ui/core/CssBaseline";
-import Container from "@material-ui/core/Container";
-import Grid from "@material-ui/core/Grid";
-import CardCarousel from "./CardCarousel";
+import React from 'react';
+import CssBaseline from '@material-ui/core/CssBaseline';
+import Container from '@material-ui/core/Container';
+import Grid from '@material-ui/core/Grid';
+import CardCarousel from './CardCarousel';
 
 export const Layout = ({ children }) => {
   return (
@@ -12,10 +12,10 @@ export const Layout = ({ children }) => {
         <Grid
           container
           spacing={6}
-          direction={"row"}
-          justify={"space-evenly"}
-          alignItems={"center"}
-          className={"hero"}
+          direction={'row'}
+          justify={'space-evenly'}
+          alignItems={'center'}
+          className={'hero'}
         >
           <CardCarousel />
         </Grid>
