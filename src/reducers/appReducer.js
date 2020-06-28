@@ -40,18 +40,23 @@ export const reducer = (state, action) => {
         rowData: [...state.rowData, action.payload],
       };
     case 'FILTER_ADDED':
-      const newStateFilters = [...state.filters];
-      newStateFilters[action.payload.index].push(action.payload.value);
+      const newStateFiltersAdded = [...state.filters];
+      newStateFiltersAdded[action.payload.index].push(action.payload.value);
       return {
         ...state,
-        filters: newStateFilters,
+        filters: newStateFiltersAdded,
       };
     case 'FILTER_REMOVED':
+      const newStateFiltersRemoved = state.filters.map((currentFilter, currentIndex) => {
+        if (action.payload.index === currentIndex) {
+          return currentFilter.filter((interiorFilter) => interiorFilter !== action.payload.value);
+        } else {
+          return currentFilter;
+        }
+      });
       return {
         ...state,
-        filters: state.filters[action.payload.index].filter(
-          (currentFilter) => currentFilter.value !== action.payload.value
-        ),
+        filters: newStateFiltersRemoved,
       };
     case 'FILTERS_REPLACED':
       return {
