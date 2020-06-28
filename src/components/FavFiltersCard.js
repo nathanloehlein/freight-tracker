@@ -10,6 +10,7 @@ import FavoriteTwoToneIcon from '@material-ui/icons/FavoriteTwoTone';
 import Button from '@material-ui/core/Button';
 import { saveCurrentFilterData, getFavFilters, deleteFavFilter } from '../utils/filterUtils';
 import DeleteForeverTwoToneIcon from '@material-ui/icons/DeleteForeverTwoTone';
+import ellipsis from 'text-ellipsis';
 
 export const FavFiltersCard = () => {
   const { dispatch, state } = React.useContext(DataContext);
@@ -37,7 +38,7 @@ export const FavFiltersCard = () => {
         </Button>
       }
     >
-      <Grid container direction={'column'} spacing={2}>
+      <Grid container direction={'column'} spacing={1}>
         {favFilters.length > 0 ? (
           favFilters.map((filter, index) => {
             const backgroundColor = deepOrange[(index + 2) * 100] || deepOrange[500];
@@ -47,13 +48,15 @@ export const FavFiltersCard = () => {
                 item
                 container
                 direction={'row'}
-                spacing={3}
+                spacing={2}
                 justify="flex-start"
                 wrap={'nowrap'}
                 alignItems="center"
                 key={index.toString()}
                 onClick={() => favFilterSelect(filter.list)}
                 style={{ cursor: 'pointer' }}
+                title={filter.name}
+                className="hoverHighlight"
               >
                 <Grid item>
                   <StatusBadge
@@ -63,8 +66,8 @@ export const FavFiltersCard = () => {
                   />
                 </Grid>
                 <Grid item>
-                  <Typography variant="h5" component="p">
-                    {filter.name || index + 1}
+                  <Typography variant="h6" component="p">
+                    {ellipsis(filter.name, 13) || index + 1}
                   </Typography>
                 </Grid>
                 <Grid

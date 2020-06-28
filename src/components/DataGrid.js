@@ -18,13 +18,13 @@ export const DataGrid = () => {
   const options = {
     filter: true,
     filterType: 'multiselect',
-    responsive: 'vertical',
+    responsive: 'standard',
     selectableRows: 'none',
     onFilterChange: (column, list) => convertFilterData(list),
   };
   return (
     <Grid container direction={'row'} spacing={6}>
-      <Grid item>
+      <Grid item xs={12}>
         {state.shipmentData && state.filters && (
           <MUIDataTable
             title={'Shipment Data'}

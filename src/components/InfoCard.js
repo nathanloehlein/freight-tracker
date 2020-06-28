@@ -6,6 +6,7 @@ import React, { useEffect } from 'react';
 import { DataContext } from '../App';
 import { getColumnAggData, getColumnData, getValueNormalized } from '../utils/dataTranslator';
 import CardDisplay from './CardDisplay';
+import ellipsis from 'text-ellipsis';
 
 export const InfoCard = (props) => {
   const { color, columnName, useAbbv = false } = props;
@@ -33,23 +34,26 @@ export const InfoCard = (props) => {
 
   return (
     <CardDisplay {...props}>
-      <Grid container direction={'column'} spacing={2}>
+      <Grid container direction={'column'} spacing={1}>
         {aggDataObjKeys.length > 0 &&
           aggDataObjKeys.map((key, index) => {
             const backgroundColor = color[(index + 2) * 100] || color[500];
             const statusInfo = <StatusIcon status={useAbbv ? key.charAt(0) : key} />;
+            const isActive = state.filters.flat(Infinity).includes(key);
             return (
               <Grid
                 item
                 container
                 direction={'row'}
-                spacing={3}
+                spacing={2}
                 wrap={'nowrap'}
                 justify="flex-start"
                 alignItems="center"
                 key={index.toString()}
                 onClick={() => applyFilter(columnName, key)}
                 style={{ cursor: 'pointer' }}
+                title={key}
+                className={(isActive ? 'activeHighlight' : '') + ` hoverHighlight`}
               >
                 <Grid item>
                   <StatusBadge
@@ -59,8 +63,8 @@ export const InfoCard = (props) => {
                   />
                 </Grid>
                 <Grid item>
-                  <Typography variant="h5" component="p">
-                    {key}
+                  <Typography variant="h6" component="p">
+                    {ellipsis(key, 13)}
                   </Typography>
                 </Grid>
               </Grid>

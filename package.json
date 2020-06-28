@@ -18,7 +18,8 @@
     "react-data-grid": "^7.0.0-canary.16",
     "react-dom": "^16.13.1",
     "react-papaparse": "^3.3.0",
-    "react-scripts": "3.4.1"
+    "react-scripts": "3.4.1",
+    "text-ellipsis": "^1.0.3"
   },
   "scripts": {
     "start": "react-scripts start",

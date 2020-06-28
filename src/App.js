@@ -6,7 +6,6 @@ import { ThemeProvider } from '@material-ui/core/styles';
 import Layout from './components/Layout';
 import { reducer, initialState } from './reducers/appReducer';
 import { theme } from './utils/theme';
-import { AddNewShipment } from './components/AddNewShipment';
 
 export const DataContext = React.createContext();
 
@@ -19,7 +18,6 @@ export const App = () => {
         <Layout>
           <div className="App">
             <DataGrid />
-            <AddNewShipment />
           </div>
         </Layout>
       </ThemeProvider>
