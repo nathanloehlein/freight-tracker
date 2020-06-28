@@ -33,7 +33,7 @@ export const Layout = ({ children }) => {
         </Grid>
         <Grid
           container
-          spacing={6}
+          spacing={4}
           direction={'row'}
           justify={'space-evenly'}
           alignItems={'center'}

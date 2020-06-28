@@ -67,7 +67,7 @@ export const FavFiltersCard = () => {
                 </Grid>
                 <Grid item>
                   <Typography variant="h6" component="p">
-                    {ellipsis(filter.name, 13) || index + 1}
+                    {ellipsis(filter.name, 15) || index + 1}
                   </Typography>
                 </Grid>
                 <Grid

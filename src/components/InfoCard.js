@@ -64,7 +64,7 @@ export const InfoCard = (props) => {
                 </Grid>
                 <Grid item>
                   <Typography variant="h6" component="p">
-                    {ellipsis(key, 13)}
+                    {ellipsis(key, 15)}
                   </Typography>
                 </Grid>
               </Grid>
