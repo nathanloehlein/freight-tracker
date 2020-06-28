@@ -8,7 +8,7 @@ import CardActions from '@material-ui/core/CardActions';
 
 export const CardDisplay = ({ children, headerTitle, avatarContent, actionButtons = null }) => {
   return (
-    <Grid item xs>
+    <Grid item xs={12} sm={6} md={3}>
       <Card className={'hero-card'}>
         {headerTitle && (
           <CardHeader

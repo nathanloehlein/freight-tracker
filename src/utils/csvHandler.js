@@ -11,7 +11,7 @@ export const useCsvHandler = (props) => {
   }
 
   if (state.isLoaded === false) {
-    readRemoteFile('data/shipment-data.csv', {
+    readRemoteFile(`${window.location.href}/data/shipment-data.csv`, {
       download: true,
       skipEmptyLines: true,
       complete: (results) => {
